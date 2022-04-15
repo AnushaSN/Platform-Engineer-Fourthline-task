@@ -1,0 +1,16 @@
+What is to be done?
+- Deploy an EKS, K8s cluster into AWS acc, in eu-west-1 availablity zone - Using terraform 
+- fork the given repo and follow instructions in README to modify and deploy a stateless app in the EKS cluster created using HELM
+- Deploy a stateful app on the EKS 
+
+Ground rules:
+- Use the AWS acc provided
+- Repo should be private
+- make it reusable
+- must be in terraform
+
+to be delivered:
+- link to repo with documentation
+- creds for EKS
+- work log
+- any improvement/suggestions/ points that could not be worked on in the given timeframe
