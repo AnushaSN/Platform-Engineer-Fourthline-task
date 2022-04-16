@@ -1,0 +1,27 @@
+IAM role setup:
+- follow https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role
+- to setup IAM role for EKS cluster access
+
+AWS-cli setup:
+- steps on https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+configuration:
+
+AWS Access Key ID [None]: YOUR_AWS_ACCESS_KEY_ID
+AWS Secret Access Key [None]: YOUR_AWS_SECRET_ACCESS_KEY
+Default region name [None]: YOUR_AWS_REGION
+Default output format [None]: json
+
+Terraform setup:
+- follow https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
+
+terraform directory structure:
+- https://www.terraform.io/language/modules/develop/structure
+
+terraform files:
+- add the files needed for the setup
+  -
+  
+- run terraform init in the root directory, should show "Terraform has been successfully initialized!" message
+- run terraform plan , to see the results of the terraform apply
+
