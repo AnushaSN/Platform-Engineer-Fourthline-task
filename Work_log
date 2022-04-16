@@ -30,3 +30,19 @@ Todo:
 - aws cli setup
 - this repo clone, setup on local
 - tf structure for eks 
+
+requirements :
+- kubectl - already setup 
+- aws -cli
+- terraform setup
+
+Accomplishment:
+- setup IAM role- eksClusterRole, a role already exsists, but adding cluster access to it might elevate access for other reosurces using it
+- aws cli setup
+- setup terraform repo with structure
+- added terraform files
+- terraform init
+- terraform plan
+
+ToDo:
+- work on errors found during terraform plan
