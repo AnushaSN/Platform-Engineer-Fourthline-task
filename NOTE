@@ -1,0 +1,7 @@
+Some Notes and Improvement points:
+
+NOTE:
+- Working on main branch, as i am the only person working in repo. Once teams start using the repo, main/master branch commits should be via PR only, as they will be deployed in production.
+
+
+Improvement Points:
