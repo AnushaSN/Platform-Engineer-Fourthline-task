@@ -14,3 +14,10 @@ Time taken:
 
 TOdo:
 - check login from credentials provided, access to resources etc
+
+Accomplished:
+- checked login for given creds- works :D 
+- have admin access to user, so IAM will not cause issues
+
+time take:
+- 15 mins
