@@ -20,8 +20,8 @@ terraform directory structure:
 
 terraform files:
 - add the files needed for the setup
-  -
   
 - run terraform init in the root directory, should show "Terraform has been successfully initialized!" message
 - run terraform plan , to see the results of the terraform apply
+- terraform apply - once you check the plan for addition - deletion and modification of reources.
 
