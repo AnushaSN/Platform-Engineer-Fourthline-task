@@ -55,6 +55,7 @@ ToDo:
 Accomplished:
 - EKS cluster setup working via terraform.
 - part 1 of the assignmnet completed.
+- created fork of the repo for the stateless app setup via helm
 
 time taken:
 - around 1 hour
