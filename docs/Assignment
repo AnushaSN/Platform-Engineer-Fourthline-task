@@ -1,7 +1,19 @@
 What is to be done?
-- Deploy an EKS, K8s cluster into AWS acc, in eu-west-1 availablity zone - Using terraform 
-- fork the given repo and follow instructions in README to modify and deploy a stateless app in the EKS cluster created using HELM
-- Deploy a stateful app on the EKS 
+1 Deploy an EKS, K8s cluster into AWS acc, in eu-west-1 availablity zone - Using terraform 
+2 fork the given repo and follow instructions in README to modify and deploy a stateless app in the EKS cluster created using HELM
+
+  Objectives:
+  - goal is to deploy the included application (under app/) to the EKS cluster you have created using the provided, rudimentary Dockerfile and Helm chart, in a namespace named as your firstname while also completing the following objectives.
+  - Enable HPA for the deployment and set the target utilization to 80% for CPU and 85% for memory.
+  - Set CPU request to 150m.
+  - Make the application highly available.
+  - Expose the application via a service to the cluster.
+  - Expose the application to the internet. You may use the Route53 zone that has already been created in the provided AWS account, in region eu-west-1.
+  - Make the application's index page show Hello {GREET_VAR} instead of "Hello world", where GREET_VAR is an environment variable. The variable should get its value from the values.yaml file.
+  - Fix the provided Dockerfile, so it runs the application on startup.
+
+
+3 Deploy a stateful app on the EKS 
 
 Ground rules:
 - Use the AWS acc provided
@@ -14,3 +26,5 @@ to be delivered:
 - creds for EKS
 - work log
 - any improvement/suggestions/ points that could not be worked on in the given timeframe
+
+
