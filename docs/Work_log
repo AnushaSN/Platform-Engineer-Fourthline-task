@@ -60,3 +60,19 @@ Accomplished:
 time taken:
 - around 1 hour
 
+19 april, 2:20 PM
+
+ToDo:
+- setup ECR
+- build the docker image and push to ECR
+- make modifications to helm to deploy the docker onto EKS
+
+Accomplished:
+- ECR setup
+- docker file built
+- Image pushed to ECR
+- - helm install throws error - hpa is unable to get metrics 
+- will do a terraform destroy and re spin EKS cluster to test the setup fresh
+
+time taken:
+4 and half hours
