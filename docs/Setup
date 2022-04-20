@@ -66,4 +66,9 @@ helm lint
  Solved error by changing it to <.Values.containerEnv>
  
  
+ 3. Stateful app deploy-
+ Deploying ngnix using statefulset, with dynamic persistant volume claim
+ 
+ - creating a new namespace to deploy nginx:
+ kubectl create namespace nginx
  
