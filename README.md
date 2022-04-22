@@ -58,6 +58,22 @@ Task2: Deploy a stateful application to the created cluster
 9. to check the persistant volumes created dynamically from statefulset:
   kubectl get pvc
 10. to check the statefulnes/persistancy of the pods:
+   Write the Pods' hostnames to their index.html files and verify that the NGINX webservers serve the hostnames:
+   for i in 0 1; do kubectl exec "web-$i" -- sh -c 'echo "$(hostname)" > /usr/share/nginx/html/index.html'; done
+   for i in 0 1; do kubectl exec -i -t "web-$i" -- curl http://localhost/; done
+   
+   you should see output:
+   web-0
+   web-1
+   
+   now delete the pods, and wait for the statefulset to create new pods:
+   kubectl delete pod -l app=nginx
+   
+   Verify the web servers continue to serve their hostnames:
+
+   for i in 0 1; do kubectl exec -i -t "web-$i" -- curl http://localhost/; done
+   web-0
+   web-1
   
 
 
