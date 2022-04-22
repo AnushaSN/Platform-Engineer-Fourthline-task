@@ -9,6 +9,7 @@ Requirements:
 Below are the listed requirements for this assignment to run as expected, steps to install them are listed in the next section
 1. aws-cli
 2. Terraform
+3. git
 
 Steps to follow to check/replicate the solution setup:
 
