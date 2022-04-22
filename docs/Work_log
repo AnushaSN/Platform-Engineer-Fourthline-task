@@ -81,3 +81,15 @@ time taken:
 
 ToDo:
 - Work on Stateful set file for ngnix and deploy onto the cluster
+
+22 April, 8PM
+Todo:
+- fix node creation issue
+- deploy ngnix as stateful set
+
+Accomplished:
+- worked on destroy and creation of tf resources multiple times
+- deployed ngnix with PVC on the cluster
+- completed task 3
+
+
