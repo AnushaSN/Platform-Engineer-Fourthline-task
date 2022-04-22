@@ -72,3 +72,10 @@ helm lint
  - creating a new namespace to deploy nginx:
  kubectl create namespace nginx
  
+ deploy the application using:
+ kubectl apply -f web.yml -n nginx
+ 
+ kubectl apply -g service.yml -n nginx
+ 
+ 
+ 
