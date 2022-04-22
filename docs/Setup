@@ -1,3 +1,5 @@
+1. EKS cluster setup:
+
 IAM role setup:
 - follow https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role
 - to setup IAM role for EKS cluster access
@@ -25,3 +27,55 @@ terraform files:
 - run terraform plan , to see the results of the terraform apply
 - terraform apply - once you check the plan for addition - deletion and modification of reources.
 
+2. Deploy a stateless application based on the given repo
+
+Docker registery setup on ECR
+-  private registry - mywebapp
+  https://eu-west-1.console.aws.amazon.com/ecr/repositories/private/073876270065/mywebapp?region=eu-west-1
+- get the creds for above repo using:
+aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 073876270065.dkr.ecr.eu-west-1.amazonaws.com
+- Build the Docker image from dockerfile using:
+docker build -t mywebapp .
+- tag the image after build
+  docker tag mywebapp:latest 073876270065.dkr.ecr.eu-west-1.amazonaws.com/mywebapp:latest
+- docker push to the ecr:
+  docker push 073876270065.dkr.ecr.eu-west-1.amazonaws.com/mywebapp:latest
+  
+ - change values.yml to add the image link pushed using above steps
+ 
+ - connect to the eks cluster via cli:
+ aws eks --region eu-west-1 update-kubeconfig --name anusha-test-Ai6WaAaD
+
+- check if you are connected to the right cluster:
+kubectl cluster-info
+
+-create namespace :
+kubectl create namespace anusha
+
+-helm install:
+helm install mywebapp -n anusha ./helm/mywebapp 
+
+the above command have a null pointer issue - debugged via helm lint on Chart.yml, which gave error:
+helm lint
+==> Linting .
+[INFO] Chart.yaml: icon is recommended
+[ERROR] templates/: template: mywebapp/templates/deployment.yaml:43:30: executing "mywebapp/templates/deployment.yaml" at <.Values.container.Env>: nil pointer evaluating interface {}.Env
+ 
+ The issue ws mostly due to multiple nesting , which itseems is an issue for helm versions 3.X
+ 
+ Solved error by changing it to <.Values.containerEnv>
+ 
+ 
+ 3. Stateful app deploy-
+ Deploying ngnix using statefulset, with dynamic persistant volume claim
+ 
+ - creating a new namespace to deploy nginx:
+ kubectl create namespace nginx
+ 
+ deploy the application using:
+ kubectl apply -f web.yml -n nginx
+ 
+ kubectl apply -g service.yml -n nginx
+ 
+ 
+ 

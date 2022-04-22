@@ -2,6 +2,8 @@ Some Notes and Improvement points:
 
 NOTE:
 - Working on main branch, as i am the only person working in repo. Once teams start using the repo, main/master branch commits should be via PR only, as they will be deployed in production.
+- The kubeconfig file is right now added in repo for ease of access for the team to verify the assignment. But the kubeconfig shouldnt be put in repo , but obatined by the user:
+https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
 
 
 Improvement Points:
