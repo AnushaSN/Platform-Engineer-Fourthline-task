@@ -92,4 +92,13 @@ Accomplished:
 - deployed ngnix with PVC on the cluster
 - completed task 3
 
+23 april 7 AM:
 
+ issue in running docker image, probably because the image is being built on macOS, and the platform tag is not working
+ trying to spin up an ec2 instance and build docker there
+ - spin up an instance with ubuntu AMI
+ - install aws-cli
+ -install docker
+ - install kubectl
+ 
+ 
