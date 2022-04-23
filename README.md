@@ -10,16 +10,24 @@ Below are the listed requirements for this assignment to run as expected, steps 
 1. aws-cli
 2. Terraform
 3. git
+4. docker
+5. kubectl
+6. helm
 
 Steps to follow to check/replicate the solution setup:
 
 Task1: Creating an EKS cluster
 
-1. clone this repo to your local
+1. install git if not present using:https://git-scm.com/downloads
 
-2. setup aws-cli if not already present using: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+2. install docker if not present using: https://docs.docker.com/engine/install/
 
-3. add there configuration details after aws-cli setup at the prompt:
+3. install kubectl if not present: 
+
+4. clone this repo to your local
+5. setup aws-cli if not already present using: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+6. install helm if not present: 
+7. add there configuration details after aws-cli setup at the prompt:
    configuration:
 
    AWS Access Key ID [None]: YOUR_AWS_ACCESS_KEY_ID
@@ -102,5 +110,56 @@ Task2: Deploy a stateful application to the created cluster
       web-0
       web-1
   
-
-
+Task3: Deploy Stateless application using given steps:
+   
+Unable to complete the task in time - the container does not start, and needs more time to debug: error: standard_init_linux.go:228: exec user process caused: exec format error
+   
+   But these are the steps for the given tasks:
+   
+   - Enable HPA for the deployment and set the target utilization to 80% for CPU and 85% for memory.
+      -  for enabling HPA, the following changes to be made in values.yml
+            -  autoscaling:
+               enabled: true
+               minReplicas: 1
+               maxReplicas: 3
+               metrics:
+               - type: Resource
+                 resource:
+                  name: cpu
+                  target:
+                     type: Utilization
+                     averageUtilization: 80
+                  - type: Resource
+                 resource:
+                  name: memory
+                  target:
+                     type: Utilization
+                     averageUtilization: 85
+   - Set CPU request to 150m.
+      to set CPU request to 150m change the below value in values.yml
+         resources:
+         limits:
+            cpu: 200m
+            memory: 200Mi
+         requests:
+            cpu: 150m
+            memory: 100Mi
+         
+   - Make the application highly available.
+      There are multiple factors that contribute to highly available systems:
+         - In Pod level, add a liveness probe to ensure the pod is restarted when app crashes, or there is a deadlock etc
+         - Ensure you have a multi node setup, and the nodes are in different avaialblity zones, so that when one node fails due to any issue, the pods are moved to a different node.
+         - Always deploy application as a ReplicaSet or Deployment object, so when one pod is down/deleted a new one is spun up automatically.
+   
+   - Expose the application via a service to the cluster.
+      - can be done by adding a service.yml with ClusterIP
+   
+   - Expose the application to the internet. You may use the Route53 zone that has already been created in the provided AWS account, in region eu-west
+      - can be achieved by adding an A record of the Service ClusterIP in Route53
+   
+   - Make the application's index page show Hello {GREET_VAR} instead of "Hello world", where GREET_VAR is an environment variable. The variable should get its value from the values.yaml file.
+   
+   - Fix the provided Dockerfile, so it runs the application on startup.
+      - can be acheived via ENTRYPOINT or CMD in dockerfile where you will provide a script or exec command that will start the application
+   
+   
