@@ -7,3 +7,6 @@ https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
 
 
 Improvement Points:
+- The setup can be automated by using jenkins script for one click deployment.
+- The installations can be automated using ansible roles
+- Terraform init can be called via jenkins, so jenkins, terraform and ansible work seamlessly
