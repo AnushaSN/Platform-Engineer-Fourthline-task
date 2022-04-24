@@ -3,6 +3,7 @@ Technical task repo
 
 For more detailed documents on worklog, steps followed,assignment details, improvement points, setup details etc refer the folder named 'docs'
 
+NOTE: Once done working on the below, use 'terraform destroy' , to delete all the infrastructure setup using the below steps.
 
 Requirements:
 
